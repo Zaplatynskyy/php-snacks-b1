@@ -79,11 +79,31 @@ $name = $_GET['name'];
 $mail = $_GET['mail'];
 $age = $_GET['age'];
 
-if (strlen($name) > 3 && (strpos($mail,'.') && strpos($mail,'@')) && is_numeric($age)) {
-    echo "<h2>Accesso riuscito</h2>";
-} else {
-    echo "<h2>Accesso negato</h2>";
-}
+//*********PRIMA SOLUZIONE */
+// if (strlen($name) > 3 && (strpos($mail,'.') && strpos($mail,'@')) && is_numeric($age)) {
+//     echo "<h2>Accesso riuscito</h2>";
+// } else {
+//     echo "<h2>Accesso negato</h2>";
+// }
 
+
+//*********SECONDA SOLUZIONE */
+if(strlen($name) > 3) {
+
+    if(strpos($mail,'.') && strpos($mail,'@')){
+
+        if(is_numeric($age) && is_int($age + 0)) {
+            echo "<h2>Accesso riuscito</h2>";
+        }else {
+            echo "<h2>Accesso negato, Inserisci un'età valida</h2>";
+        }
+
+    }else {
+        echo "<h2>Accesso negato, Inserisci una mail valida</h2>";
+    }
+
+}else {
+    echo "<h2>Accesso negato, Inserisci un nome con almeno 4 lettere</h2>";
+}
 
 ?>
