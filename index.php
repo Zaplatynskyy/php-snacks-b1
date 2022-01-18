@@ -4,7 +4,67 @@ Olimpia Milano - Cantù | 55-60-->
 
 <?php
 
+$partite = [
+    [
+        'squadra_casa' => [
+            'nome' => 'Olimpia Milano',
+            'punteggio' => 55,
+        ],
+        'squadra_ospite' => [
+            'nome' => 'Cantù',
+            'punteggio' => 60,
+        ]
+    ],
+    [
+        'squadra_casa' => [
+            'nome' => 'GeVi Napoli',
+            'punteggio' => 63,
+        ],
+        'squadra_ospite' => [
+            'nome' => 'GeVi Napoli',
+            'punteggio' => 73,
+        ]
+    ],
+    [
+        'squadra_casa' => [
+            'nome' => 'Segafredo Virtus Bologna',
+            'punteggio' => 74,
+        ],
+        'squadra_ospite' => [
+            'nome' => 'Segafredo Virtus Bologna',
+            'punteggio' => 67,
+        ]
+    ],
+    [
+        'squadra_casa' => [
+            'nome' => 'Umana Reyer Venezia',
+            'punteggio' => 78,
+        ],
+        'squadra_ospite' => [
+            'nome' => 'Allianz Pallacanestro Trieste',
+            'punteggio' => 73,
+        ]
+    ],
+    [
+        'squadra_casa' => [
+            'nome' => 'Openjobmetis Varese',
+            'punteggio' => 52,
+        ],
+        'squadra_ospite' => [
+            'nome' => 'Banco di Sardegna Sassari',
+            'punteggio' => 74,
+        ]
+    ],
+];
+
+echo "<h2>Partite di basket</h2>";
+for($i = 0; $i < count($partite); $i++) {
+    echo "{$partite[$i]['squadra_casa']['nome']}"." - "."{$partite[$i]['squadra_ospite']['nome']}"." | "."{$partite[$i]['squadra_casa']['punteggio']}"." - "."{$partite[$i]['squadra_ospite']['punteggio']}"."<br><br>";
+}
+
 ?>
+
+
 
 
 
