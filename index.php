@@ -75,9 +75,9 @@ Passare come parametri GET name, mail e age e verificare (cercando i metodi che 
 
 <?php
 
-$name = $_GET['name'];
-$mail = $_GET['mail'];
-$age = $_GET['age'];
+// $name = $_GET['name'];
+// $mail = $_GET['mail'];
+// $age = $_GET['age'];
 
 //*********PRIMA SOLUZIONE */
 // if (strlen($name) > 3 && (strpos($mail,'.') && strpos($mail,'@')) && is_numeric($age)) {
@@ -88,22 +88,121 @@ $age = $_GET['age'];
 
 
 //*********SECONDA SOLUZIONE */
-if(strlen($name) > 3) {
 
-    if(strpos($mail,'.') && strpos($mail,'@')){
+if(!empty( $_GET['name']) || !empty($_GET['mail']) || !empty($_GET['age'])){
 
-        if(is_numeric($age) && is_int($age + 0)) {
-            echo "<h2>Accesso riuscito</h2>";
+    if(strlen( $_GET['name']) > 3) {
+
+        if(strpos($_GET['mail'],'.') && strpos($_GET['mail'],'@')){
+    
+            if(is_numeric($_GET['age']) && is_int($_GET['age'] + 0)) {
+                echo "<h2>Accesso riuscito</h2>";
+            }else {
+                echo "<h2>Accesso negato, Inserisci un'età valida</h2>";
+            }
+    
         }else {
-            echo "<h2>Accesso negato, Inserisci un'età valida</h2>";
+            echo "<h2>Accesso negato, Inserisci una mail valida</h2>";
         }
-
+    
     }else {
-        echo "<h2>Accesso negato, Inserisci una mail valida</h2>";
+        echo "<h2>Accesso negato, Inserisci un nome con almeno 4 lettere</h2>";
     }
 
-}else {
-    echo "<h2>Accesso negato, Inserisci un nome con almeno 4 lettere</h2>";
+} else {
+    echo "<h2><strong>Non hai inserito i parametri name, mail e age da verificare</strong></h2>";
 }
 
 ?>
+
+<!-- Snack 5
+Stampare ogni data con i relativi post.
+Qui l’array di esempio: https://www.codepile.net/pile/R2K5d68z -->
+
+<?php
+
+$posts = [
+
+    '10/01/2019' => [
+        [
+            'title' => 'Post 1',
+            'author' => 'Michele Papagni',
+            'text' => 'Testo post 1'
+        ],
+        [
+            'title' => 'Post 2',
+            'author' => 'Michele Papagni',
+            'text' => 'Testo post 2'
+        ],
+    ],
+    '10/02/2019' => [
+        [
+            'title' => 'Post 3',
+            'author' => 'Michele Papagni',
+            'text' => 'Testo post 3'
+        ]
+    ],
+    '15/05/2019' => [
+        [
+            'title' => 'Post 4',
+            'author' => 'Michele Papagni',
+            'text' => 'Testo post 4'
+        ],
+        [
+            'title' => 'Post 5',
+            'author' => 'Michele Papagni',
+            'text' => 'Testo post 5'
+        ],
+        [
+            'title' => 'Post 6',
+            'author' => 'Michele Papagni',
+            'text' => 'Testo post 6'
+        ]
+    ],
+];
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php 
+        //************** */ Soluzione 1
+        // foreach($posts as $date => $post){
+        //     echo "<h2>{$date}</h2>";
+
+        //     foreach($post as $el) {
+                
+        //         echo "<ul>"; 
+        //         foreach($el as $value) {
+
+        //             echo "<li>{$value}</li>";
+                    
+        //         }
+        //         echo "</ul>";
+        //     }
+        // }
+
+        //************** Soluzione 2
+        foreach($posts as $date => $post){
+            echo "<h2>{$date}</h2>";
+
+            foreach($post as $el) {
+                echo "<ul>"; 
+                
+                echo "<li><strong style='color : red;'>{$el['title']}</strong></li>";
+                echo "<li><strong>{$el['author']}</strong></li>";
+                echo "<li>{$el['text']}</li>";
+
+                echo "</ul>"; 
+            }
+        }
+    ?>
+</body>
+</html>
